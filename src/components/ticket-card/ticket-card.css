@@ -16,6 +16,7 @@
 .userPhoto{
     width: 20px;
     height: 20px;
+    border-radius: 10px;
 }
 .circlePic{
     width: 15px;

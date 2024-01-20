@@ -7,13 +7,14 @@ import { MdOutlineSignalCellularAlt, MdOutlineSignalCellularAlt2Bar, MdOutlineSi
 import { PiCellSignalNoneThin } from "react-icons/pi";
 import { IoAlert } from "react-icons/io5";
 
-function TicketCard({ticketID,ticketName,ticketTag,ticketPriority,criteria}) {
+function TicketCard({ticketID,ticketName,ticketTag,ticketPriority,criteria,number}) {
+  const randomImageLink = 'https://picsum.photos/20/20?random=';
   const priorityIcons = [<PiCellSignalNoneThin/>, <MdOutlineSignalCellularAlt1Bar/>, <MdOutlineSignalCellularAlt2Bar/>, <MdOutlineSignalCellularAlt/>,  <IoAlert/>]
   return (
     <div className='cardContainer'>
         <div className='cardTicketHeader'>
         <p className='ticketID'>{ticketID}</p>
-        {!(criteria == 'user')  && <img src={userIcon} alt="User pic" className='userPhoto'/>}
+        {!(criteria == 'user')  && <img src={randomImageLink+number} alt="User pic" className='userPhoto'/>}
         </div>
         <div className='ticketNameSection'>
           <img src={circle} alt="Circle pic" className='circlePic'/>

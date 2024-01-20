@@ -75,6 +75,8 @@ function App() {
   const tickets = data?.tickets;
   const users = data?.users;
 
+  const randomImageLink = 'https://picsum.photos/20/20?random=';
+
   const sortTickets = (criteria) => {
     switch (criteria) {
       case 'priority':
@@ -111,7 +113,7 @@ function App() {
       <div className='displayFilter'>
         <div className='newDisplay' onClick={handleClickPopUp} ref={popupRef1}>
           <LuSettings2 className='filterSettings'/>
-          Display
+          Filter
           <MdKeyboardArrowDown/>
         </div>
         <FilterPopUp
@@ -131,7 +133,7 @@ function App() {
               <div className='columnHeadingSection'>
                 <div className='columnHeadingIcons'>
                   {groupBy == 'status' && <span className='statusIcon'> {statusIcons[key]}</span>}
-                  {groupBy == 'user' && <span className='statusIcon'> <img src={userIcon} alt="User pic" className='userPhoto'/></span>}
+                  {groupBy == 'user' && <span className='statusIcon'> <img src={randomImageLink+Math.random()} alt="User pic" className='userPhoto'/></span>}
                   {groupBy == 'priority' && <span className='statusIcon'>{priorityIcons[key]}</span>}
                   <p className='columnHeading'>{key}    {tickets.length} </p>
                 </div>
@@ -147,6 +149,7 @@ function App() {
                 ticketTag={ticket.tag[0]} 
                 ticketPriority={ticket.priority}
                 criteria={groupBy}
+                number={ticket.userId.split('-')[1]}
                 />
               ))}
             </div>
