@@ -1,5 +1,6 @@
 .App {
  background-color: rgb(237, 235, 235);
+ height: 100vh;
 }
 .displayFilter{
   padding: 10px 0 10px 20px;
@@ -20,6 +21,7 @@
   margin-top: 3px 0;
 }
 .columnsContainer{
+  height: 100%;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   padding: 0 0 100px 0;
