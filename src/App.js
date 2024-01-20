@@ -79,7 +79,7 @@ function App() {
       case 'priority':
         return tickets?.sort((a, b) => b.priority - a.priority);
       case 'title':
-        return tickets?.map(group => Array.isArray(group) ? [...group].sort((a, b) => a.title.localeCompare(b.title)) : group);
+        return tickets?.sort((a, b) => a.title.localeCompare(b.title));
       default:
         return tickets;
     }
@@ -90,7 +90,6 @@ function App() {
 
     return sortedTickets?.reduce((groups, ticket) => {
       const key = criteria === 'user' && ticket.userId ? getUserName(ticket.userId) : criteria === 'priority' ? priority[ticket[criteria]] : ticket[criteria];
-      console.log(key);
       groups[key] = [...(groups[key] || []), ticket];
       return groups;
     }, allStatusValues.reduce((obj, status) => ({ ...obj, [status]: [] }), {}));
