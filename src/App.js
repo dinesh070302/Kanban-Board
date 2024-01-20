@@ -1,11 +1,9 @@
 import React, { useEffect, useState , useRef} from 'react';
 import './App.css';
 import TicketCard from './components/ticket-card/ticket-card';
-import userIcon from './assets/userIcon.svg';
 import { FaPlus } from "react-icons/fa6";
 import { SlOptions } from "react-icons/sl";
 import { MdOutlineSignalCellularAlt, MdOutlineSignalCellularAlt2Bar, MdOutlineSignalCellularAlt1Bar } from "react-icons/md";
-import { LuSignalZero } from "react-icons/lu";
 import { PiCellSignalNoneThin } from "react-icons/pi";
 import { GrInProgress } from "react-icons/gr";
 import { GoDot } from "react-icons/go";
@@ -15,7 +13,6 @@ import { IoAlert } from "react-icons/io5";
 import { LuSettings2 } from "react-icons/lu";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import FilterPopUp from './components/filterPopUp/filterPopUp';
-import { FaUser } from "react-icons/fa";
 
 function App() {
   const popupRef1 = useRef(null);
@@ -82,7 +79,7 @@ function App() {
       case 'priority':
         return tickets?.sort((a, b) => b.priority - a.priority);
       case 'title':
-        return tickets?.sort((a, b) => a.title.localeCompare(b.title));
+        return tickets?.map(group => Array.isArray(group) ? [...group].sort((a, b) => a.title.localeCompare(b.title)) : group);
       default:
         return tickets;
     }
@@ -128,7 +125,7 @@ function App() {
       </div>
       {data && (
         <div className="columnsContainer">
-          {Object.entries(groupedTickets || {}).map(([key, tickets,index]) => (
+          {Object.entries(groupedTickets || {}).map(([key, tickets]) => (
             <div key={key} className="column">
               <div className='columnHeadingSection'>
                 <div className='columnHeadingIcons'>
