@@ -1,0 +1,26 @@
+.displayPopupVisible{
+    background-color: rgb(222, 222, 222);
+    padding: 20px;
+    position: absolute;
+    left: 50px;
+    top: 45px;
+    width: 200px;
+    border-radius: 10px;
+
+}
+.grouping{
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0,0,0,0.7);
+    font-weight: 500;
+    &:first-child{
+        margin: 0 0 10px 0;
+    }
+}
+.displayPopupHide{
+    display: none;
+}
+.groupByDropdown{
+    border-radius: 5px;
+    background-color: white;
+}
